@@ -17,6 +17,8 @@
   --yt-btn-primary-hover: #272727;
   --yt-toast-bg: #333333;
   --yt-search-btn-bg: #f8f8f8;
+  --yt-banner-bg: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+  --yt-placeholder-bg: #e5e5e5;
 }
 
 /* ── Base ── */

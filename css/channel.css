@@ -7,7 +7,7 @@
 .channel-banner-placeholder {
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+  background: var(--yt-banner-bg);
 }
 .channel-banner img { width: 100%; height: 100%; object-fit: cover; }
 
@@ -78,7 +78,7 @@
   border-radius: 12px;
   overflow: hidden;
   cursor: pointer;
-  background: #e5e5e5;
+  background: var(--yt-placeholder-bg);
   transition: opacity 0.15s;
 }
 .featured-thumbnail:hover { opacity: 0.92; }
@@ -156,7 +156,7 @@
   aspect-ratio: 16/9;
   border-radius: 12px;
   overflow: hidden;
-  background: #e5e5e5;
+  background: var(--yt-placeholder-bg);
   margin-bottom: 8px;
   transition: opacity 0.15s;
 }
