@@ -3,7 +3,6 @@
 :root {
   --yt-header-height: 56px;
   --yt-sidebar-width: 72px;
-  --yt-red: #ff0000;
   --yt-text-primary: #0f0f0f;
   --yt-text-secondary: #606060;
   --yt-bg: #ffffff;
@@ -12,6 +11,12 @@
   --yt-btn-bg: #f2f2f2;
   --yt-btn-hover: #e5e5e5;
   --yt-tag-bg: #f2f2f2;
+  --yt-avatar-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --yt-text-inverse: #ffffff;
+  --yt-btn-primary-bg: #0f0f0f;
+  --yt-btn-primary-hover: #272727;
+  --yt-toast-bg: #333333;
+  --yt-search-btn-bg: #f8f8f8;
 }
 
 /* ── Base ── */
@@ -98,7 +103,7 @@ body {
 }
 .yt-search-btn {
   width: 64px;
-  background: #f8f8f8;
+  background: var(--yt-search-btn-bg);
   border-left: 1px solid var(--yt-border);
   display: flex;
   align-items: center;
@@ -110,11 +115,11 @@ body {
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--yt-avatar-bg);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: var(--yt-text-inverse);
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
@@ -135,6 +140,7 @@ body {
   background: var(--yt-bg);
 }
 #yt-sidebar::-webkit-scrollbar { display: none; }
+#yt-sidebar { scrollbar-width: none; /* Firefox */ }
 
 .yt-sidebar-item {
   display: flex;
@@ -192,8 +198,8 @@ body {
   transition: background 0.1s;
 }
 .yt-btn:hover { background: var(--yt-btn-hover); }
-.yt-btn.primary { background: #0f0f0f; color: #fff; }
-.yt-btn.primary:hover { background: #272727; }
+.yt-btn.primary { background: var(--yt-btn-primary-bg); color: #fff; }
+.yt-btn.primary:hover { background: var(--yt-btn-primary-hover); }
 .yt-btn svg { width: 20px; height: 20px; fill: currentColor; }
 
 /* ── Toast ── */
@@ -202,8 +208,8 @@ body {
   bottom: 24px;
   left: 50%;
   transform: translateX(-50%) translateY(80px);
-  background: #333;
-  color: white;
+  background: var(--yt-toast-bg);
+  color: var(--yt-text-inverse);
   padding: 12px 20px;
   border-radius: 4px;
   font-size: 14px;
