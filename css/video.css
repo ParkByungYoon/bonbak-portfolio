@@ -1,0 +1,134 @@
+/* ── Video Layout ── */
+#video-layout {
+  display: flex;
+  gap: 24px;
+  padding: 24px;
+  max-width: 1800px;
+}
+#video-primary { flex: 1; min-width: 0; }
+#video-secondary { width: 402px; flex-shrink: 0; }
+
+/* ── Theater mode ── */
+body.theater-mode #yt-sidebar,
+body.theater-mode #video-secondary { display: none; }
+body.theater-mode #yt-page-container { padding-left: 0; }
+
+/* ── PDF Viewer ── */
+#pdf-viewer-container {
+  background: #000;
+  border-radius: 12px;
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 200px;
+}
+#pdf-canvas {
+  display: block;
+  width: 100%;
+  max-height: calc(100vh - 200px);
+  object-fit: contain;
+  background: #111;
+}
+#pdf-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: rgba(0, 0, 0, 0.85);
+  color: var(--yt-text-inverse);
+  font-size: 14px;
+  flex-shrink: 0;
+}
+#pdf-controls .yt-icon-button { color: var(--yt-text-inverse); }
+#pdf-controls .yt-icon-button svg { fill: var(--yt-text-inverse); }
+#pdf-controls .yt-icon-button:hover { background: rgba(255,255,255,0.1); }
+#pdf-page-info { font-size: 14px; min-width: 60px; text-align: center; }
+
+#pdf-viewer-container:fullscreen,
+#pdf-viewer-container:-webkit-full-screen {
+  background: #000;
+  display: flex;
+  flex-direction: column;
+}
+#pdf-viewer-container:fullscreen #pdf-canvas,
+#pdf-viewer-container:-webkit-full-screen #pdf-canvas {
+  flex: 1;
+  max-height: none;
+  height: 100%;
+}
+
+/* ── Project Info ── */
+#video-info { margin-top: 16px; }
+#project-title { font-size: 20px; font-weight: 700; line-height: 1.4; margin-bottom: 8px; }
+#project-meta { font-size: 14px; color: var(--yt-text-secondary); margin-bottom: 12px; }
+
+/* ── Action Buttons ── */
+#action-buttons {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+#like-btn.liked { background: var(--yt-btn-primary-bg); color: var(--yt-text-inverse); }
+#like-btn.liked svg { fill: var(--yt-text-inverse); }
+
+/* ── Description Box ── */
+#project-description-box {
+  background: var(--yt-btn-bg);
+  border-radius: 12px;
+  padding: 16px;
+}
+#project-description {
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 12px;
+  white-space: pre-wrap;
+}
+#project-tags { display: flex; flex-wrap: wrap; gap: 4px; }
+
+/* ── Related Projects ── */
+#related-projects-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.related-card {
+  display: flex;
+  gap: 8px;
+  cursor: pointer;
+  border-radius: 8px;
+  padding: 4px;
+  transition: background 0.1s;
+}
+.related-card:hover { background: var(--yt-hover-bg); }
+.related-card-thumbnail {
+  width: 168px;
+  aspect-ratio: 16/9;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.related-card-thumbnail .thumbnail-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  color: rgba(255,255,255,0.8);
+  text-align: center;
+  padding: 4px;
+}
+.related-card-info { flex: 1; min-width: 0; }
+.related-card-title {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-bottom: 4px;
+}
+.related-card-meta { font-size: 12px; color: var(--yt-text-secondary); }
