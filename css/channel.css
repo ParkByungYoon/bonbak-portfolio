@@ -186,12 +186,13 @@
   overflow: hidden;
 }
 .project-card-meta { font-size: 12px; color: var(--yt-text-secondary); line-height: 1.4; }
-.project-card-category-badge {
-  display: inline-block;
+.project-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 4px;
+}
+.project-card-tags .yt-tag {
   padding: 2px 6px;
-  border-radius: 4px;
   font-size: 11px;
-  background: var(--yt-tag-bg);
-  color: var(--yt-text-secondary);
-  margin-bottom: 2px;
 }

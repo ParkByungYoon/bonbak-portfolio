@@ -131,4 +131,6 @@ body.theater-mode #yt-page-container { padding-left: 0; }
   overflow: hidden;
   margin-bottom: 4px;
 }
+.related-card-tags { display: flex; flex-wrap: wrap; gap: 3px; margin-bottom: 3px; }
+.related-card-tags .yt-tag { padding: 2px 5px; font-size: 10px; }
 .related-card-meta { font-size: 12px; color: var(--yt-text-secondary); }

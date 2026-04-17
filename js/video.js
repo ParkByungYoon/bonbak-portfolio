@@ -19,7 +19,7 @@ function renderProjectInfo(project) {
   document.title = `${project.title} — ML Portfolio`;
   document.getElementById('project-title').textContent = project.title;
   document.getElementById('project-meta').innerHTML =
-    `<strong>${PORTFOLIO_DATA.channel.name}</strong> · ${project.date} · ${project.category}`;
+    `<strong>${PORTFOLIO_DATA.channel.name}</strong> · ${project.start_date} ~ ${project.end_date} · ${project.category}`;
   document.getElementById('project-description').textContent = project.description;
   document.getElementById('project-tags').innerHTML =
     project.tags.map(t => `<span class="yt-tag">${t}</span>`).join('');
@@ -41,8 +41,8 @@ async function loadPDF(url) {
     await renderPage(currentPage);
     updatePageInfo();
   } catch {
-    // PDF file not present yet — show category color as placeholder
-    const bg = PORTFOLIO_DATA.categoryColors[currentProject.category] || '#333';
+    // PDF file not present yet — show playlist color as placeholder
+    const bg = PORTFOLIO_DATA.playlistColors[currentProject.playlist] || PORTFOLIO_DATA.categoryColors[currentProject.category] || '#333';
     const container = document.getElementById('pdf-viewer-container');
     container.style.background = bg;
     document.getElementById('pdf-canvas').style.display = 'none';
@@ -159,11 +159,11 @@ function initDownload(project) {
 
 // ── Related projects ──────────────────────
 function renderRelatedProjects(project) {
-  const sameCategory = PORTFOLIO_DATA.projects.filter(
-    p => p.category === project.category && p.id !== project.id
+  const samePlaylist = PORTFOLIO_DATA.projects.filter(
+    p => p.playlist === project.playlist && p.id !== project.id
   );
-  const others = PORTFOLIO_DATA.projects.filter(p => p.category !== project.category);
-  const combined = [...sameCategory, ...others].slice(0, 8);
+  const others = PORTFOLIO_DATA.projects.filter(p => p.playlist !== project.playlist);
+  const combined = [...samePlaylist, ...others].slice(0, 8);
 
   const container = document.getElementById('related-projects-list');
   if (combined.length === 0) {
@@ -171,7 +171,7 @@ function renderRelatedProjects(project) {
     return;
   }
   container.innerHTML = combined.map(p => {
-    const bg = PORTFOLIO_DATA.categoryColors[p.category] || '#e5e5e5';
+    const bg = PORTFOLIO_DATA.playlistColors[p.playlist] || '#e5e5e5';
     return `
       <div class="related-card" onclick="location.href='video.html?id=${p.id}'">
         <div class="related-card-thumbnail">
@@ -179,7 +179,8 @@ function renderRelatedProjects(project) {
         </div>
         <div class="related-card-info">
           <div class="related-card-title">${p.title}</div>
-          <div class="related-card-meta">${p.category} · ${p.date}</div>
+          <div class="related-card-tags">${p.tags.map(t => `<span class="yt-tag">${t}</span>`).join('')}</div>
+          <div class="related-card-meta">${p.start_date} ~ ${p.end_date}</div>
         </div>
       </div>
     `;

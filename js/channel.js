@@ -1,5 +1,5 @@
 function thumbnailHTML(project) {
-  const bg = PORTFOLIO_DATA.categoryColors[project.category] || '#e5e5e5';
+  const bg = PORTFOLIO_DATA.playlistColors[project.playlist] || PORTFOLIO_DATA.categoryColors[project.category] || '#e5e5e5';
   // Set hasImage to true after adding real images to assets/thumbnails/
   const hasImage = false;
   if (hasImage) {
@@ -16,8 +16,8 @@ function projectCardHTML(project) {
       <div class="project-card-thumbnail">${thumbnailHTML(project)}</div>
       <div class="project-card-title">${project.title}</div>
       <div class="project-card-meta">
-        <span class="project-card-category-badge">${project.category}</span><br>
-        ${project.date}
+        <div class="project-card-tags">${project.tags.map(t => `<span class="yt-tag">${t}</span>`).join('')}</div>
+        ${project.start_date} ~ ${project.end_date}
       </div>
     </div>
   `;
@@ -59,7 +59,7 @@ function homeContentHTML() {
   let html = '';
 
   if (featured) {
-    const bg = PORTFOLIO_DATA.categoryColors[featured.category] || '#e5e5e5';
+    const bg = PORTFOLIO_DATA.playlistColors[featured.playlist] || PORTFOLIO_DATA.categoryColors[featured.category] || '#e5e5e5';
     html += `
       <div class="featured-section">
         <div class="featured-thumbnail" onclick="location.href='video.html?id=${featured.id}'">
@@ -68,7 +68,7 @@ function homeContentHTML() {
         <div class="featured-info">
           <div class="project-category">${featured.category}</div>
           <h2>${featured.title}</h2>
-          <div class="project-date">${featured.date}</div>
+          <div class="project-date">${featured.start_date} ~ ${featured.end_date}</div>
           <p class="project-description">${featured.description}</p>
           <div class="project-tags">
             ${featured.tags.map(t => `<span class="yt-tag">${t}</span>`).join('')}
@@ -100,16 +100,16 @@ function homeContentHTML() {
 }
 
 function videosContentHTML() {
-  const sorted = [...PORTFOLIO_DATA.projects].sort((a, b) => b.date.localeCompare(a.date));
+  const sorted = [...PORTFOLIO_DATA.projects].sort((a, b) => b.start_date.localeCompare(a.start_date));
   return `<div class="all-videos-grid">${sorted.map(projectCardHTML).join('')}</div>`;
 }
 
 function playlistsContentHTML() {
   let html = '';
-  PORTFOLIO_DATA.categoryOrder.forEach(cat => {
-    const projects = PORTFOLIO_DATA.projects.filter(p => p.category === cat);
+  PORTFOLIO_DATA.playlistOrder.forEach(cat => {
+    const projects = PORTFOLIO_DATA.projects.filter(p => p.playlist === cat);
     if (projects.length === 0) return;
-    const bg = PORTFOLIO_DATA.categoryColors[cat] || '#e5e5e5';
+    const bg = PORTFOLIO_DATA.playlistColors[cat] || '#e5e5e5';
     html += `
       <div class="playlist-section">
         <div class="playlist-header">
