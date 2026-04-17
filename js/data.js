@@ -44,7 +44,7 @@ const PORTFOLIO_DATA = {
       start_date: "2024-01",
       end_date: "2024-12",
       thumbnail: "assets/thumbnails/rag-chatbot.jpg",
-      pdf: "assets/pdfs/NFPPF.pdf",
+      pdf: "assets/pdfs/KGQA.pdf",
       description: "400만 엔티티 규모의 건물에너지 온톨로지를 기반으로 답변하는 RAG 구축, 실제 도메인 질의 600건에 대해 F1-score 0.8 이상 달성",
       tags: ["RAG", "LLM", "Knowledge Graph"],
       featured: false,
