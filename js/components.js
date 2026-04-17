@@ -7,11 +7,7 @@ function renderHeader() {
         <svg viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
       </button>
       <a href="index.html" class="yt-logo">
-        <svg height="20" viewBox="0 0 90 20" xmlns="http://www.w3.org/2000/svg">
-          <rect x="1" y="1" width="27" height="18" rx="4" fill="#ff0000"/>
-          <polygon points="11,5 11,15 20,10" fill="#ffffff"/>
-          <text x="32" y="15" font-family="'Roboto',Arial,sans-serif" font-weight="700" font-size="13" fill="#0f0f0f">Portfolio</text>
-        </svg>
+        <span class="yt-logo-text">Portfolio</span>
       </a>
     </div>
     <div class="yt-header-center">
