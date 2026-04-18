@@ -58,7 +58,7 @@ const PORTFOLIO_DATA = {
       start_date: "2023-09",
       end_date: "2023-12",
       thumbnail: "assets/thumbnails/multimodal-sentiment.jpg",
-      pdf: "assets/pdfs/NFPPF.pdf",
+      pdf: "assets/pdfs/DT.pdf",
       description: "4800명의 6개월 간 시청 데이터를 학습한 그래프 신경망으로 세그먼트 생성, IPTV 3사(SKB, KT, LGU+)의 사내 ERP 시스템 도입 및 모수 검증에 성공",
       tags: ["GNN", "Decision Tree", "Distillation"],
       featured: false,
