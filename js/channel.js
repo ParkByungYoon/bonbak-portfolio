@@ -1,13 +1,40 @@
 function thumbnailHTML(project) {
   const bg = PORTFOLIO_DATA.playlistColors[project.playlist] || PORTFOLIO_DATA.categoryColors[project.category] || '#e5e5e5';
-  // Set hasImage to true after adding real images to assets/thumbnails/
-  const hasImage = false;
-  if (hasImage) {
+  if (project.thumbnail) {
     return `<img src="${project.thumbnail}" alt="${project.title}"
       onerror="this.style.display='none';this.nextSibling.style.display='flex'">
       <div class="thumbnail-placeholder" style="display:none;background:${bg}"></div>`;
   }
+  if (project.pdf) {
+    return `<canvas class="pdf-thumbnail" data-pdf="${project.pdf}"></canvas>`;
+  }
   return `<div class="thumbnail-placeholder" style="background:${bg}"></div>`;
+}
+
+async function renderPDFThumbnails() {
+  if (typeof pdfjsLib === 'undefined') return;
+  pdfjsLib.GlobalWorkerOptions.workerSrc =
+    'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+  const canvases = document.querySelectorAll('canvas.pdf-thumbnail');
+  for (const canvas of canvases) {
+    if (canvas.dataset.rendered) continue;
+    canvas.dataset.rendered = '1';
+    try {
+      const pdf = await pdfjsLib.getDocument(canvas.dataset.pdf).promise;
+      const page = await pdf.getPage(1);
+      const containerWidth = canvas.parentElement.clientWidth || 320;
+      const baseViewport = page.getViewport({ scale: 1 });
+      const scaled = page.getViewport({ scale: containerWidth / baseViewport.width });
+      canvas.width = scaled.width;
+      canvas.height = scaled.height;
+      canvas.style.width = '100%';
+      canvas.style.height = '100%';
+      canvas.style.objectFit = 'cover';
+      await page.render({ canvasContext: canvas.getContext('2d'), viewport: scaled }).promise;
+    } catch {
+      canvas.style.display = 'none';
+    }
+  }
 }
 
 function projectCardHTML(project) {
@@ -63,7 +90,9 @@ function homeContentHTML() {
     html += `
       <div class="featured-section">
         <div class="featured-thumbnail" onclick="location.href='video.html?id=${featured.id}'">
-          <div class="thumbnail-placeholder" style="background:${bg}"></div>
+          ${featured.pdf
+            ? `<canvas class="pdf-thumbnail" data-pdf="${featured.pdf}"></canvas>`
+            : `<div class="thumbnail-placeholder" style="background:${bg}"></div>`}
         </div>
         <div class="featured-info">
           <div class="project-category">${featured.category}</div>
@@ -136,6 +165,7 @@ function renderTabContent(tab) {
   else if (tab === 'playlists') html = playlistsContentHTML();
   document.getElementById('channel-content').innerHTML =
     `<div class="channel-content-inner">${html}</div>`;
+  renderPDFThumbnails();
 }
 
 document.addEventListener('DOMContentLoaded', () => {
