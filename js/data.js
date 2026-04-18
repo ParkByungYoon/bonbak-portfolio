@@ -72,7 +72,7 @@ const PORTFOLIO_DATA = {
       start_date: "2022-01",
       end_date: "2022-06",
       thumbnail: "assets/thumbnails/time-series-forecast.jpg",
-      pdf: "assets/pdfs/NFPPF.pdf",
+      pdf: "assets/pdfs/POI.pdf",
       description: "50만개 리뷰를 바탕으로 맛집을 소개하는 서비스 개발, 2만개의 음식점을 사용자의 기호에 맞게 추천",
       tags: ["Metapath2Vec", "Hybrid RecSys"],
       featured: false,
