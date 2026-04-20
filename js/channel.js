@@ -57,7 +57,7 @@ function renderChannelHeader() {
       <div class="channel-banner-placeholder"></div>
     </div>
     <div class="channel-info-row">
-      <div class="channel-avatar-placeholder">${channel.name.charAt(0)}</div>
+      <img class="channel-avatar" src="assets/icons/avatar.png" alt="${channel.name}">
       <div class="channel-details">
         <h1 class="channel-name">${channel.name}</h1>
         <div class="channel-meta">${channel.handle} · ${channel.role}</div>
