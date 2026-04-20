@@ -172,10 +172,13 @@ function renderRelatedProjects(project) {
   }
   container.innerHTML = combined.map(p => {
     const bg = PORTFOLIO_DATA.playlistColors[p.playlist] || '#e5e5e5';
+    const thumbContent = p.thumbnail
+      ? `<img src="${p.thumbnail}" alt="${p.title}" style="width:100%;height:100%;object-fit:cover;">`
+      : `<div class="thumbnail-placeholder" style="background:${bg}"></div>`;
     return `
       <div class="related-card" onclick="location.href='video.html?id=${p.id}'">
         <div class="related-card-thumbnail">
-          <div class="thumbnail-placeholder" style="background:${bg}"></div>
+          ${thumbContent}
         </div>
         <div class="related-card-info">
           <div class="related-card-title">${p.title}</div>
