@@ -79,11 +79,12 @@ const PORTFOLIO_DATA = {
       likes: 0, // initial fallback; actual count stored in localStorage as `likes_${id}`
     },
     {
-      id: "moabogi",
-      title: "프로젝트 모아보기",
+      id: "molabogi",
+      title: "프로젝트 몰아보기",
       category: "프로젝트",
       start_date: "2022-01",
       end_date: "2025-03",
+      thumbnail: "assets/thumbnails/molabogi.png",
       pdf: "assets/pdfs/TOTAL.pdf",
       description: "포트폴리오 내 모든 프로젝트를 한 곳에 모아두었습니다.",
       tags: [],
