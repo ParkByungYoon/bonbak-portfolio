@@ -90,9 +90,11 @@ function homeContentHTML() {
     html += `
       <div class="featured-section">
         <div class="featured-thumbnail" onclick="location.href='video.html?id=${featured.id}'">
-          ${featured.pdf
-            ? `<canvas class="pdf-thumbnail" data-pdf="${featured.pdf}"></canvas>`
-            : `<div class="thumbnail-placeholder" style="background:${bg}"></div>`}
+          ${featured.thumbnail
+            ? `<img src="${featured.thumbnail}" alt="${featured.title}" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none';this.nextSibling.style.display='block'">${featured.pdf ? `<canvas class="pdf-thumbnail" data-pdf="${featured.pdf}" style="display:none"></canvas>` : `<div class="thumbnail-placeholder" style="display:none;background:${bg}"></div>`}`
+            : featured.pdf
+              ? `<canvas class="pdf-thumbnail" data-pdf="${featured.pdf}"></canvas>`
+              : `<div class="thumbnail-placeholder" style="background:${bg}"></div>`}
         </div>
         <div class="featured-info">
           <div class="project-category">${featured.category}</div>
