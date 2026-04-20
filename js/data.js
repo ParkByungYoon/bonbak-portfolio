@@ -23,6 +23,19 @@ const PORTFOLIO_DATA = {
 
   projects: [
     {
+      id: "molabogi",
+      title: "프로젝트 몰아보기",
+      category: "프로젝트",
+      start_date: "2022-01",
+      end_date: "2025-03",
+      thumbnail: "assets/thumbnails/molabogi.png",
+      pdf: "assets/pdfs/TOTAL.pdf",
+      description: "포트폴리오 내 모든 프로젝트를 한 곳에 모아두었습니다.",
+      tags: [],
+      featured: true,
+      likes: 0, // initial fallback; actual count stored in localStorage as `likes_${id}`
+    },
+    {
       id: "new-fashion-product-performance-forecasting",
       title: "패션 신상품 수요 예측 모델 개발",
       category: "프로젝트",
@@ -76,19 +89,6 @@ const PORTFOLIO_DATA = {
       description: "50만개 리뷰를 바탕으로 맛집을 소개하는 서비스 개발, 2만개의 음식점을 사용자의 기호에 맞게 추천",
       tags: ["Metapath2Vec", "Hybrid RecSys"],
       featured: false,
-      likes: 0, // initial fallback; actual count stored in localStorage as `likes_${id}`
-    },
-    {
-      id: "molabogi",
-      title: "프로젝트 몰아보기",
-      category: "프로젝트",
-      start_date: "2022-01",
-      end_date: "2025-03",
-      thumbnail: "assets/thumbnails/molabogi.png",
-      pdf: "assets/pdfs/TOTAL.pdf",
-      description: "포트폴리오 내 모든 프로젝트를 한 곳에 모아두었습니다.",
-      tags: [],
-      featured: true,
       likes: 0, // initial fallback; actual count stored in localStorage as `likes_${id}`
     }
     // {
