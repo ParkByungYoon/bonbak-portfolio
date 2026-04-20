@@ -33,7 +33,7 @@ const PORTFOLIO_DATA = {
       pdf: "assets/pdfs/NFPPF.pdf",
       description: "2만개의 상품 이미지/텍스트/시계열 데이터 활용하여 상품의 판매량 예측, 기존 현업의 통계기법 대비 MSE 지표 기준 30% 이상의 오차 감소 달성",
       tags: ["Multi-Variate Time-Series", "CLIP"],
-      featured: true,
+      featured: false,
       likes: 0, // initial fallback; actual count stored in localStorage as `likes_${id}`
     },
     {
@@ -78,6 +78,18 @@ const PORTFOLIO_DATA = {
       featured: false,
       likes: 0, // initial fallback; actual count stored in localStorage as `likes_${id}`
     },
+    {
+      id: "moabogi",
+      title: "프로젝트 모아보기",
+      category: "프로젝트",
+      start_date: "2022-01",
+      end_date: "2025-03",
+      pdf: "assets/pdfs/TOTAL.pdf",
+      description: "포트폴리오 내 모든 프로젝트를 한 곳에 모아두었습니다.",
+      tags: [],
+      featured: true,
+      likes: 0, // initial fallback; actual count stored in localStorage as `likes_${id}`
+    }
     // {
     //   id: "churn-prediction",
     //   title: "다중 레이블 분류 오픈소스 프레임워크 개발",
